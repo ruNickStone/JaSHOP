@@ -7,23 +7,7 @@
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script type="text/javascript">
-		function main()
-		{
-			var username = $("#login").val();
-			$.ajax({
-				type: "POST",
-				url: "jabber.php",
-				data: {"login": username},
-				cache: false,                                 
-				success: function(response){
-					$("#result").html(response);
-				}
-			});
-			return false;
-		}
-	</script>
-	<script type="text/javascript" src="validCheck.js"></script>
+	<script type="text/javascript" src="general.js"></script>
 </head>
 <!-- JaShop Beta 31/01/15 -->
 <body>
@@ -34,7 +18,7 @@
 			<div class="input-group">
 				<input type="text" class="form-control" autofocus placeholder="example@jabbim.com" autocomplete="off" name="login" id="login" onKeyDown="if ((event.keyCode == 13) && validCheck()) document.getElementById('btn').click()">
 				<span class="input-group-btn">
-					<button class="btn btn-default" type="button" id="btn" onClick="if (validCheck()) main();"><span class="glyphicon glyphicon-search"></span></button>
+					<button class="btn btn-default" type="button" id="btn" onClick="if (validCheck()) main();"><span class="glyphicon glyphicon-eye-open"></span></button>
 				</span>
 			</div>
 		</div>

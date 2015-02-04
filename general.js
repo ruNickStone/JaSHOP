@@ -41,3 +41,18 @@
 	}
 	return true;
 }
+
+function main()
+{
+	var username = $("#login").val();
+	$.ajax({
+		type: "POST",
+		url: "jabber.php",
+		data: {"login": username},
+		cache: false,                                 
+		success: function(response){
+			$("#result").html(response);
+		}
+	});
+	return false;
+}
