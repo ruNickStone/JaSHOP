@@ -1,11 +1,21 @@
 <?php
 header("Content-type: text/html; charset=UTF-8");
+include("./xmpp/XMPP.php");
+
+function jabberCheck($domain, $username, $password)
+{
+	$connection = new XMPPHP_XMPP($domain, 5222, $username, $password, '');
+	if($conn->connect())
+		return true;
+	else
+		return false;
+}
+
 $login = $_POST['login'];
 $login = addslashes($login);
 $login = htmlspecialchars($login);
 $login = stripslashes($login);
 $strError = '<div class="alert alert-danger" role="alert"><strong>Error</strong>. Jabber is not valid.<br /><p style="margin-left: 20px;">';
-
 
 if (strlen($login) < 10)
 	exit($strError.'The length must be at least 10 characters</p></div>');
