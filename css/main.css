@@ -16,4 +16,17 @@ body { background: url(../bg.png) repeat 0 0; }
 {
 	margin-top: 200px;
 	text-align:  center;
+	font-family: 'American TextC';
+	color: #FFF;
+	font-size: 75px;
+}
+
+@font-face {
+    font-family: 'American TextC';
+    src: url('../fonts/american_textc.eot');
+    src: url('../fonts/american_textc.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/american_textc.woff') format('woff'),
+         url('../fonts/american_textc.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
