@@ -3,7 +3,7 @@ body { background: url(../bg.png) repeat 0 0; }
 .centerBlock
 {
 	width: 500px;
-	height: 250px;
+	height: 450px;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -14,7 +14,7 @@ body { background: url(../bg.png) repeat 0 0; }
 
 .text
 {
-	margin-top: 200px;
+	margin-bottom: 50px;
 	text-align:  center;
 	font-family: 'American TextC';
 	color: #FFF;
