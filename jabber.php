@@ -44,8 +44,9 @@ $db = mysql_connect('localhost', 'root', '');
 mysql_select_db('jabber', $db);
 mysql_query('SET NAMES UTF8');
 
-$query = mysql_query("SELECT password,available FROM `jabber`.`jabbim_pl` WHERE username='$username'", $db);
-if(mysql_num_rows($query) > 0)
+$table_name = str_replace(".", "_", $domain); // domain.com => domain_com
+$query = mysql_query("SELECT password,available FROM `jabber`.`$table_name` WHERE username='$username'", $db);
+if(mysql_num_rows($query) == 1)
 {
 	$info = mysql_fetch_array($query);
 	if ($info['available'] == 1)
@@ -55,7 +56,7 @@ if(mysql_num_rows($query) > 0)
 			<div class="panel panel-success">
   				<div class="panel-heading">Success. Buy account '.$login.'</div>
   				<div class="panel-body">
-    				<center><img src="jabbim.gif"></center>
+    				<center><img src="./img/jabbim.gif"></center>
     				<p class="text-left">15$/'.$bitcoin_cost.' btc</p>
   				</div>
 			</div>

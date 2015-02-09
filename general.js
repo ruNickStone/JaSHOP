@@ -50,7 +50,7 @@ function main()
 		url: "jabber.php",
 		data: {"login": username},
 		cache: false,                                 
-		success: function(response){
+		success: function(response) {
 			$("#result").html(response);
 		}
 	});
