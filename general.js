@@ -44,6 +44,8 @@
 
 function main()
 {
+	$('#result').html('<center><img src="./img/loading.gif"></center>');
+
 	var username = $("#login").val();
 	$.ajax({
 		type: "POST",

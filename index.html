@@ -6,8 +6,20 @@
 	
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
+	<link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="general.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#login').autocomplete({
+				source: 'jabber.php',
+				minLength: 2,
+				delay: 100,
+				autoFocus: true
+			})
+		});
+	</script>
 </head>
 
 <!-- JaShop Beta 31/01/15 -->

@@ -1,14 +1,17 @@
 <?php
 header("Content-type: text/html; charset=UTF-8");
-include("./xmpp/XMPP.php");
+include('./xmpp/XMPP.php');
+include('config.php');
 
-function jabberCheck($domain, $username, $password)
+if (isset($_GET['term']) && !empty($_GET['term']))
 {
-	$connection = new XMPPHP_XMPP($domain, 5222, $username, $password, '');
-	if($conn->connect())
-		return true;
-	else
-		return false;
+	$term  = mysql_real_escape_string($_GET['term']); 
+	$query = mysql_query("SELECT username FROM `data` WHERE username LIKE '$term%'");
+	if(mysql_num_rows($query) > 0)
+	{
+		while ($tmp = mysql_fetch_array($query)) $result[] = $tmp['username'];
+	}
+	exit(json_encode($result));
 }
 
 $login = $_POST['login'];
@@ -39,13 +42,7 @@ else
 		exit('<div class="alert alert-danger" role="alert"><strong>Error</strong>. I don\'t have BD from '.$domain.'</p></div>');
 }
 
-
-$db = mysql_connect('localhost', 'root', '');
-mysql_select_db('jabber', $db);
-mysql_query('SET NAMES UTF8');
-
-$table_name = str_replace(".", "_", $domain); // domain.com => domain_com
-$query = mysql_query("SELECT password,available FROM `jabber`.`$table_name` WHERE username='$username'", $db);
+$query = mysql_query("SELECT password,available FROM `data` WHERE username='$login'", $db);
 if(mysql_num_rows($query) == 1)
 {
 	$info = mysql_fetch_array($query);
@@ -67,4 +64,13 @@ if(mysql_num_rows($query) == 1)
 		exit('<div class="alert alert-warning" role="alert"><strong>Sorry!</strong> This account was bought earlier</p></div>');
 } else
 	exit('<div class="alert alert-warning" role="alert"><strong>Sorry!</strong> I have not found in my database that person</p></div>');
+
+function jabberCheck($domain, $username, $password)
+{
+	$connection = new XMPPHP_XMPP($domain, 5222, $username, $password, '');
+	if($conn->connect())
+		return true;
+	else
+		return false;
+}
 ?>
